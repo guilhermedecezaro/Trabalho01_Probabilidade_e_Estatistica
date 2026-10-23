@@ -1,0 +1,17 @@
+# P2
+total = int(input("Digite o tamanho total da população (ex: 52 na questao): "))
+grupos = int(input("Digite a quantidade de grupos iguais (ex: 4 na questao): "))
+
+if total % grupos != 0:
+    print("Erro: a população não pode ser dividida igualmente nesses grupos.")
+else:
+    elementos_grupo = total / grupos
+
+    probabilidade_grupo = elementos_grupo / total
+ 
+    probabilidade_nao_grupo = 1 - probabilidade_grupo
+
+    print("Elementos em cada grupo:", elementos_grupo)
+    print("Probabilidade de ser do grupo =", probabilidade_grupo)
+    print("Probabilidade de não ser do grupo =", probabilidade_nao_grupo)
+  

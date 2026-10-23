@@ -1,0 +1,33 @@
+
+
+probabilidade_defeituoso = float(input(" Digite a probabilidade de um item ser defeituoso (ex: 0.05): "))
+n = int(input(" Digite o tamanho do lote (ex: 20): "))
+defeito_exato = int(input("b) Digite o número exato de defeituosos (ex: 2): "))
+limite_defeito = int(input("c) Digite a probabilidade de haver MAIS de quantos defeituosos? (ex: 2): "))
+
+probs = []
+for k in range(n + 1):
+    comb = 1
+    for i in range(k):
+        comb = comb * (n - i) // (i + 1)
+    probs.append(comb * probabilidade_defeituoso ** k * (1 - probabilidade_defeituoso) ** (n - k))
+
+prob_algum_defeito = 1 - probs[0]
+prob_exato = probs[defeito_exato]
+
+prob_mais = 0
+for k in range(limite_defeito + 1, n + 1):
+    prob_mais = prob_mais + probs[k]
+
+esperado_defeito = n * probabilidade_defeituoso
+esperado_bons = n * (1 - probabilidade_defeituoso)
+
+variancia = n * probabilidade_defeituoso * (1 - probabilidade_defeituoso)
+
+print()
+print("a) Probabilidade de algum item com defeito) =", round(prob_algum_defeito, 6))
+print("b) Probabilidade de exatamente", defeito_exato, "defeituosos) =", round(prob_exato, 6))
+print("c) Probabilidade de haver mais de", limite_defeito, "defeituosos) =", round(prob_mais, 6))
+print("d) Esperado de defeituosos =", round(esperado_defeito, 4))
+print("   Esperado de itens bons =", round(esperado_bons, 4))
+print("e) Variância =", round(variancia, 4))

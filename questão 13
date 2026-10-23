@@ -1,0 +1,24 @@
+import math
+
+taxa_media = float(input("Taxa média de chegadas por minuto (ex: 5): "))
+
+chegadas_a = int(input("a) Digite a quantidade de chegadas desejadas (ex: 2): "))
+tempo_a = float(input("a) Digite o tempo em minutos (ex: 1): "))
+
+lambda_a = taxa_media * tempo_a
+prob_a = (math.exp(-lambda_a) * (lambda_a ** chegadas_a)) / math.factorial(chegadas_a)
+
+print()
+print("Probabilidade de ocorrerem exatamente", chegadas_a, "chegadas em", tempo_a, "minuto(s) =", round(prob_a, 6))
+
+
+print()
+
+chegadas_b = int(input("b) Digite a quantidade de chegadas desejadas (ex: 1): "))
+tempo_b = float(input("b) Digite o tempo em minutos (ex: 0.5 para 30s): "))
+
+lambda_b = taxa_media * tempo_b
+prob_b = (math.exp(-lambda_b) * (lambda_b ** chegadas_b)) / math.factorial(chegadas_b)
+
+print()
+print("Probabilidade de ocorrerem exatamente", chegadas_b, "chegadas em", tempo_b, "minuto(s) =", round(prob_b, 6))

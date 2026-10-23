@@ -1,0 +1,17 @@
+#p6
+
+total_produtos = int(input("Digite o total de produtos vendidos (ex: 813 na questão): "))
+precisa_reparo = int(input("Digite a quantidade que exigiu reparo (ex: 504): "))
+
+if precisa_reparo > total_produtos:
+    print("Invalido, Digite novamente.")
+else:
+    não_precisa_reparo = total_produtos - precisa_reparo
+
+    prob_reparo = precisa_reparo / total_produtos
+    prob_sem_reparo = não_precisa_reparo / total_produtos
+
+    print("Produtos sem reparo:", não_precisa_reparo)
+    print("Probabilidade de exigir reparo =", f"{prob_reparo:.4f}")
+    print("Probabilidade de não exigir reparo =", f"{prob_sem_reparo:.4f}")
+  

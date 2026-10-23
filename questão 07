@@ -1,0 +1,32 @@
+#P7
+
+quantidade = int(input("Digite a quantidade de clientes (ex: 5 na questão): "))
+
+nomes = []       # nome de cada cliente
+porcentagem_pedidos = [] # % dos pedidos que vêm de cada cliente
+porcentagem_erros = []   # % de pedidos com erro de cada cliente
+
+for i in range(quantidade):
+    nome = input("Digite o nome do cliente " + str(i + 1) + ": ")
+    pedidos = float(input("Digite a porcentagem de pedidos que vêm do cliente " + nome + ": "))
+    erros = float(input("Digite a porcentagem de pedidos com erro do cliente " + nome + ": "))
+    nomes.append(nome)
+    porcentagem_pedidos.append(pedidos / 100) 
+    porcentagem_erros.append(erros / 100)
+
+p_erro = 0
+for i in range(quantidade):
+    p_erro = p_erro + porcentagem_pedidos[i] * porcentagem_erros[i]
+
+print()
+print("a) Probabilidade do sistema apresentar erro =", round(p_erro, 6))
+
+print()
+escolhido = input("b) De qual cliente quer a probabilidade, sabendo que houve erro? (ex: E): ")
+
+if escolhido in nomes:
+    pos = nomes.index(escolhido)
+    p_cliente_erro = porcentagem_pedidos[pos] * porcentagem_erros[pos] / p_erro
+    print("Probabilidade de " + escolhido + " ter um pedido com erro =", round(p_cliente_erro, 6))
+else:
+    print("Cliente não encontrado.")

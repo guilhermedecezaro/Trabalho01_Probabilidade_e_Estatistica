@@ -1,0 +1,25 @@
+def combinacao(n, k):
+    c = 1
+    for i in range(k):
+        c = c * (n - i) // (i + 1)
+    return c
+
+mulheres = int(input("Digite a quantidade de mulheres (ex: 60): "))
+homens = int(input("Digite a quantidade de homens (ex: 40): "))
+n = int(input("Digite a quantidade de pessoas sorteadas (ex: 2): "))
+k = int(input("Digite quantas mulheres devem sair (ex: 1): "))
+
+total = mulheres + homens
+
+if n > total or k > n or k > mulheres or (n - k) > homens:
+    print("Erro: valores impossiveis para esse sorteio.")
+else:
+    prob = combinacao(mulheres, k) * combinacao(homens, n - k) / combinacao(total, n)
+
+   
+    print("Mulheres sorteadas:", k)
+    print("Homens sorteados:", n - k)
+    print("Formas de escolher essas mulheres =", combinacao(mulheres, k))
+    print("Formas de escolher esses homens =", combinacao(homens, n - k))
+    print("Formas de escolher essas pessoas de toda a populacao =", combinacao(total, n))
+    print("Probabilidade de sairem exatamente essas mulheres =", round(prob, 6))

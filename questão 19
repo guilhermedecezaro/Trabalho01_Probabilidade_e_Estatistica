@@ -1,0 +1,35 @@
+import math
+
+media = float(input("Digite a média (Me, ex: 48): "))
+DP = float(input("Digite o desvio-padrão (Dp, ex: 3): "))
+
+print("a) Probabilidade entre dois valores")
+limite_inf_a = float(input("Digite o limite inferior (ex: 42): "))
+limite_sup_a = float(input("Digite o limite superior (ex: 49): "))
+
+z1_a = (limite_inf_a - media) / DP
+z2_a = (limite_sup_a - media) / DP
+
+fda1_a = 0.5 * (1 + math.erf(z1_a / math.sqrt(2)))
+fda2_a = 0.5 * (1 + math.erf(z2_a / math.sqrt(2)))
+probabilidade_a = fda2_a - fda1_a
+
+print("Probabilidade de o evento ter valores entre", limite_inf_a, "e", limite_sup_a, "cm =", round(probabilidade_a, 6))
+print()
+
+print("b) Probabilidade superior a um valor (Maior que)")
+valor_b = float(input("Digite o valor limite superior a ser testado (ex: 52): "))
+
+z_b = (valor_b - media) / DP
+fda_b = 0.5 * (1 + math.erf(z_b / math.sqrt(2)))
+probabilidade_b = 1.0 - fda_b
+
+print("Probabilidade de o evento ter valores superiores a", valor_b, "cm =", round(probabilidade_b, 6))
+print()
+print("c) Probabilidade inferior a um valor (Menor que)")
+valor_c = float(input("Digite o valor limite inferior a ser testado (ex: 45): "))
+
+z_c = (valor_c - media) / DP
+probabilidade_c = 0.5 * (1 + math.erf(z_c / math.sqrt(2)))
+
+print("Probabilidade de o evento ter valores inferiores a", valor_c, "cm =", round(probabilidade_c, 6))

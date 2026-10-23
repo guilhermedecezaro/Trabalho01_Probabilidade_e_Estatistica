@@ -1,0 +1,31 @@
+import math
+
+def fda_normal(valor, media, desvio_padrao):
+    z = (valor - media) / desvio_padrao
+    return 0.5 * (1 + math.erf(z / math.sqrt(2)))
+
+M1 = float(input("Digite a média do peso líquido (M1, ex: 900): "))
+D1 = float(input("Digite o desvio-padrão do peso líquido (D1, ex: 10): "))
+
+M2 = float(input("Digite a média do peso da embalagem (M2, ex: 100): "))
+D2 = float(input("Digite o desvio-padrão do peso da embalagem (D2, ex: 4): "))
+
+media_bruto = M1 + M2
+desvio_bruto = math.sqrt(D1**2 + D2**2)
+
+print()
+print("Média do peso bruto =", round(media_bruto, 2), "g")
+print("Desvio-padrão do peso bruto =", round(desvio_bruto, 4), "g")
+print()
+
+MS = float(input("Item a) Digite o peso de referência (MS, ex: 1020): "))
+prob_a = 1 - fda_normal(MS, media_bruto, desvio_bruto)
+
+print("Probabilidade de o peso bruto ser superior a", MS, "g =", round(prob_a, 6))
+print()
+
+I1 = float(input("Item b) Digite o limite inferior do intervalo (I1, ex: 980): "))
+I2 = float(input("Item b) Digite o limite superior do intervalo (I2, ex: 1020): "))
+prob_b = fda_normal(I2, media_bruto, desvio_bruto) - fda_normal(I1, media_bruto, desvio_bruto)
+
+print("Probabilidade de o peso bruto estar entre", I1, "g e", I2, "g =", round(prob_b, 6))

@@ -1,0 +1,12 @@
+# P5
+quantidade = int(input("Digite a quantidade de pessoas tentando (ex: 2 na questão): "))
+
+prob_ninguem_resolver = 1
+for i in range(quantidade):
+    prob_resolver = float(input("Digite a probabilidade da pessoa " + str(i + 1) + " resolver (ex: 0.5): "))
+    prob_ninguem_resolver = prob_ninguem_resolver * (1 - prob_resolver)
+
+prob_resolvido = 1 - prob_ninguem_resolver
+
+print("Probabilidade de ninguém resolver) =", f"{prob_ninguem_resolver:.4f}")
+print("Probabilidade do problema ser resolvido) =", f"{prob_resolvido:.4f}")

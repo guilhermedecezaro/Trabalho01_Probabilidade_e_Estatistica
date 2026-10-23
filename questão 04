@@ -1,0 +1,18 @@
+#P4
+
+civil = int(input("Digite a quantidade de estudantes de Engenharia Civil (ex: 30 na questao): "))
+outras = int(input("Digite a quantidade de estudantes de outras engenharias (ex: 10 na questao): "))
+n = int(input("Digite a quantidade de estudantes sorteados n (ex: 2 ou 4 na questao): "))
+
+total = civil + outras
+
+if n > total:
+    print("Erro: n não pode ser maior que o total de estudantes.")
+else:
+    prob = 1
+    for i in range(n):
+        prob = prob * (civil - i) / (total - i)
+
+    print()
+    print("Probabilidade de todos os", n, "escolhidos serem de Engenharia Civil) =", prob)
+    print()

@@ -1,0 +1,27 @@
+#P8
+
+quantidade = int(input("Digite a quantidade de máquinas (ex: 3): "))
+
+nomes = []      
+porcentagem_prod = []   
+porcentagem_defeito = [] 
+
+for i in range(quantidade):
+    nome = input("Digite o nome da máquina " + str(i + 1) + ": ")
+    producao = float(input("Digite a porcentagem da produção total da máquina " + nome + ": "))
+    defeito = float(input("Digite a porcentagem de parafusos defeituosos da máquina " + nome + ": "))
+    nomes.append(nome)
+    porcentagem_prod.append(producao / 100)       
+    porcentagem_defeito.append(defeito / 100)
+
+prob_defeituoso = 0
+for i in range(quantidade):
+    prob_defeituoso = prob_defeituoso + porcentagem_prod[i] * porcentagem_defeito[i]
+
+print()
+print("Porcentagem de parafusos defeituosos) =", round(prob_defeituoso, 6))
+print()
+
+for i in range(quantidade):
+    p = porcentagem_prod[i] * porcentagem_defeito[i] / prob_defeituoso
+    print("Porcentagem da máquina " + nomes[i] + "ter um parafuso defeituoso) =", round(p, 6))

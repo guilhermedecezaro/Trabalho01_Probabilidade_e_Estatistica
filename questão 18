@@ -1,0 +1,17 @@
+import math
+
+def fda_normal_padrao(z):
+    if z == float('-inf'):
+        return 0.0
+    if z == float('inf'):
+        return 1.0
+    return 0.5 * (1 + math.erf(z / math.sqrt(2)))
+
+print("Para o calculo infinito positivo use 'inf', para infinito negativo use '-inf'.\n")
+
+limite_inferior = float(input("Digite o limite inferior (ex: 0 ou -1.25 ou -inf): "))
+limite_superior = float(input("Digite o limite superior (ex: 1.73 ou -0.63 ou inf): "))
+
+probabilidade = fda_normal_padrao(limite_superior) - fda_normal_padrao(limite_inferior)
+print()
+print("Probabilidade de Z estar entre", limite_inferior, "e", limite_superior, "=", round(probabilidade, 6))

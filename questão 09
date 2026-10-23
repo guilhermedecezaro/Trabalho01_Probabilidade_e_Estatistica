@@ -1,0 +1,34 @@
+# P9
+
+print("1 - (C1 e C2 em série) em paralelo com (C3 e C4 em série)")
+print("2 - (C1 e C3 em paralelo) em série com (C2 e C4 em paralelo)")
+config = int(input("Escolha a configuração (1 ou 2): "))
+
+while config != 1 and config != 2:
+    print("Configuração inválida. Escolha 1 ou 2.")
+    config = int(input("Digite a configuração (1 ou 2): "))
+
+probabilidade = []
+for i in range(4):
+    valor = float(input("Digite a probabilidade de funcionamento de C" + str(i + 1) + " (ex: 0.9): "))
+    probabilidade.append(valor)
+
+if config == 1:
+
+    linha_cima = probabilidade[0] * probabilidade[1]
+    linha_baixo = probabilidade[2] * probabilidade[3]
+  
+    prob_sistema = 1 - (1 - linha_cima) * (1 - linha_baixo)
+    print("Probabilidade de C1 e C2 funcionarem =", round(linha_cima, 6))
+    print("Probabilidade de C3 e C4 funcionarem =", round(linha_baixo, 6))
+else:
+  
+    lado_esquerdo = 1 - (1 - probabilidade[0]) * (1 - probabilidade[2])
+    lado_direito = 1 - (1 - probabilidade[1]) * (1 - probabilidade[3])
+   
+    prob_sistema = lado_esquerdo * lado_direito
+    print("Probabilidade do lado C1/C3 funcionar) =", round(lado_esquerdo, 6))
+    print("Probabilidade do lado C2/C4 funcionar) =", round(lado_direito, 6))
+
+print("Probabilidade (sistema funcionar) =", round(prob_sistema, 6))
+

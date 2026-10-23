@@ -1,0 +1,16 @@
+import math
+
+p = float(input("Probabilidade de erro de cada bit (ex: 0.0002): "))
+n = int(input("Quantidade de bits transmitidos (ex: 10000): "))
+k = int(input("Mais de quantos bits com erro? (ex: 4): "))
+
+
+soma = 0
+for i in range(k + 1):
+    soma = soma + math.comb(n, i) * p ** i * (1 - p) ** (n - i)
+
+prob = 1 - soma
+
+print()
+print("Probabilidade de ocorrerem até", k, "erros =", round(soma, 6))
+print("Probabilidade de ocorrerem mais de", k, "erros =", round(prob, 6))

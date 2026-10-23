@@ -1,0 +1,32 @@
+# P3
+quantidade = int(input("Digite a quantidade de empresas (ex: 5 na questao): "))
+
+nomes = []         # lista com o nome de cada empresa
+funcionarios = []  # lista com o número de funcionários de cda empresa
+for i in range(quantidade):
+    nome = input("Digite o nome da empresa " + str(i + 1) + ": ")
+    func = int(input("Digite o número de funcionários da empresa " + nome + ": "))
+    nomes.append(nome)
+    funcionarios.append(func)
+
+total = 0
+for i in funcionarios:
+    total = total + i
+
+print()
+print("a) Probabilidade de cada empresa ser selecionada:")
+probabilidade = []
+for i in range(quantidade):
+    p = funcionarios[i] / total
+    probabilidade.append(p)
+    print("Probabilidade de " + nomes[i] + " ser selecionada) =", p)
+
+print()
+escolhida = input("b) Qual empresa quer saber a probabilidade de não ser selecionada?")
+
+if escolhida in nomes:
+    pos = nomes.index(escolhida)
+    p_nao = 1 - probabilidade[pos]
+    print("Probabilidade de " + escolhida + " não ser selecionada) =", p_nao)
+else:
+    print("Empresa não encontrada.")

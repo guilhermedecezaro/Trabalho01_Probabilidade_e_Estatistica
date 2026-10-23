@@ -1,0 +1,14 @@
+import math
+
+A = float(input("Digite a taxa de falha (A, ex: 0.012): "))
+C = float(input("Digite o primeiro tempo em horas (C, ex: 50): "))
+D = float(input("Digite o segundo tempo em horas (D, ex: 100): "))
+
+prob_C = math.exp(-A * C)
+prob_D = math.exp(-A * D)
+
+print("Probabilidade de o dispositivo sobreviver a mais de", C, "horas =", round(prob_C, 6))
+
+print()
+
+print("Probabilidade de o dispositivo sobreviver a mais de", D, "horas =", round(prob_D, 6))

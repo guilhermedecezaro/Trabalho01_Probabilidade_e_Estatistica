@@ -1,0 +1,20 @@
+A = float(input("Digite o valor do limite inferior (A): "))
+B = float(input("Digite o valor do limite superior (B): "))
+
+C = float(input("Digite o limite inferior do evento (C): "))
+D = float(input("Digite o limite superior do evento (D): "))
+
+esperanca = (A + B) / 2
+variancia = ((B - A) ** 2) / 12
+
+c_ajustado = max(A, min(B, C))
+d_ajustado = max(A, min(B, D))
+
+if d_ajustado > c_ajustado:
+    prob = (d_ajustado - c_ajustado) / (B - A)
+else:
+    prob = 0.0
+
+print("O valor esperado é =", round(esperanca, 4))
+print("A variância é =", round(variancia, 4))
+print("A probabilidade de X estar no intervalo entre", C, "e", D, "é =", round(prob, 6))

@@ -1,0 +1,18 @@
+#P10
+import math
+
+media_liq = float(input("Digite a média do peso líquido em g (ex: 900): "))
+DP_liq = float(input("Digite o desvio-padrão do peso líquido em g (ex: 10): "))
+media_embalagem = float(input("Digite a média do peso da embalagem em g (ex: 100): "))
+DP_embalagem = float(input("Digite o desvio-padrão do peso da embalagem em g (ex: 4): "))
+
+media_bruto = media_liq + media_embalagem
+
+variancia_bruto = DP_liq ** 2 + DP_embalagem ** 2
+
+DP_bruto = math.sqrt(variancia_bruto)
+
+print()
+print("Média do peso bruto =", media_bruto, "g")
+print("Variância do peso bruto =", variancia_bruto)
+print("Desvio-padrão do peso bruto =", round(DP_bruto, 4), "g")
